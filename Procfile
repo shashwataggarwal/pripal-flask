@@ -1,0 +1,1 @@
+web: gunicorn flaskapp/__init__:app

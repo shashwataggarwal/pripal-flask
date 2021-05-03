@@ -1,10 +1,5 @@
 import numpy as np
-# import nltk
-# from sklearn.feature_extraction.text import CountVectorizer
-# from sklearn.feature_extraction.text import TfidfTransformer
-# from sklearn.ensemble import AdaBoostClassifier
-# from sklearn.ensemble import RandomForestClassifier
-# from sklearn.pipeline import Pipeline
+
 
 
 # A helper function to predict classes from models stored in a dict

@@ -5,6 +5,7 @@ from lib.textprocessors import text_process_policy, reverse_paragraph_segmenter,
 from lib.urlparser import url_input_parser
 from lib.modelpredictors import predict_proba_all_models
 import pandas as pd
+import sklearn.ensemble
 import pickle
 import urllib
 
@@ -71,23 +72,16 @@ policy_thresholds = {
 
 @app.route('/')
 @app.route('/index')
-@app.route('/input')
 def text_input():
     return render_template("input.html")
-
-@app.route('/about')
-def about():
-    return render_template("about.html")
 
 @app.route('/output')
 def text_output():
     # pull url from page
-    url = request.args.get('url_text')
-    print('URL: ' + url)
+    url = ''
 
     # pull policy text from the input field and store it
     policy_text = request.args.get('policy_text')
-    print('Policy text: ' + policy_text)
 
     # user input checks
     domain = ''     #Initialize
@@ -113,7 +107,7 @@ def text_output():
         segment_list = reverse_paragraph_segmenter(policy_text)
 
         if len(' '.join(segment_list)) <= 500:
-            message = '<p>That policy was a bit short.</p><p>We do better with longer documents.</p>'
+            message = 'The entered policy is too short. Please enter a longer policy.'
             return render_template("input.html", message=message)
 
     else:

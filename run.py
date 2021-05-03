@@ -1,2 +1,2 @@
-from flaskapp import app
-app.run(debug = True)
+# from flaskapp import app
+# app.run(debug = True)
